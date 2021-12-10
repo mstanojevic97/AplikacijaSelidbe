@@ -1,0 +1,57 @@
+<%- include('header'); -%>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/">POČETAK</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <h1 class="cover-heading" style="padding-top: 30px;">Narudžbine korisnika:</h1>  
+  <div class="container bg-light text-dark">
+    <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Lokacija</th>
+        <th>Opis</th>
+        <th>Dužina</th>
+        <th>Vreme</th>
+        <th>Cena</th>
+        <th>Vozilo</th>
+        <th>Status</th>
+        <th>Akcija</th>
+      </tr>
+    </thead>
+    <% orders.forEach(function(order) { %>
+      <tr>
+        <th><%=order.ID%></th>
+        <th><%=order.Lokacija%></th>
+        <th><%=order.Opis%></th>
+        <th><%=order.Km%></th>
+        <th><%=order.Vreme%> Sata</th>
+        <th><%=order.Cena%> €</th>
+        <th>Vozilo</th>
+        <th>Status</th>
+        <th>Obriši/Gotovo</th>
+      </tr>
+    <%});
+    %>
+    </table>
+</div>
+<footer class="container-fluid text-center">
+  <a href="#myPage" title="Nazad na vrh">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+  <p>Vrati se na vrh</p>
+</footer>
+</body>
+</html>
