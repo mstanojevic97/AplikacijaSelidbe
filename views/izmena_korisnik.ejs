@@ -1,0 +1,50 @@
+<%- include('header'); -%>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/pregled">MOJE NARUDZBINE</a></li>
+        <li><a href="/logout">IZLOGUJ SE</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container bg-light text-dark">
+  <div class="col-lg-4 col-xs-12">
+      <h1 class="cover-heading" style="padding-top: 30px;">Izmena porudžbine:</h1>
+      <form action="<%=narudzbina.ID%>" method="POST">
+        <div class="form-group">
+          <label for="exampleInput">Nova lokacija:</label>
+          <input type="textarea" class="form-control" required name="lokacija" value="<%= narudzbina.lokacija%>">
+        </div>
+        <div class="form-group">
+          <label for="exampleInput">Novi opis:</label>
+          <input type="textarea" class="form-control" required name="opis" value="<%=narudzbina.opis%>">
+        </div>
+        <div class="form-group">
+          <label for="exampleInput">Nova dužina:</label>
+          <input type="textarea" class="form-control" placeholder="Dužina u km:" required name="duzina" value="<%=narudzbina.duzina%>">
+        </div>
+        <div class="form-group">
+            <label for="exampleInput">Odaberite vozilo:</label>
+            <select class="form-control" name="vozilo" required>
+              <%vans.forEach(function(van) {%>
+                <option><%=van.TipVozila%></option> 
+            <%});
+            %>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-default">Sačuvaj izmene</button>
+      </form>
+  </div>
+</div>
+<script>
+
+</script>

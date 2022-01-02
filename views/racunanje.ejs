@@ -1,0 +1,60 @@
+<%- include('header'); -%>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/pregled">MOJE NARUDZBINE</a></li>
+        <li><a href="/logout">IZLOGUJ SE</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+    <div class="col-lg-6 col-sm-12">
+        <h1 class="cover-heading" style="padding-top: 30px;">Izračunaj cenu i vreme nove narudžbine:</h1>
+        <div class="col-sm-5 col-xs-12">
+            <form>
+                <div class="form-group">
+                    <label for="exampleInput">Odaberite vozilo:</label>
+                    <select class="form-control" name="vozilo">
+                        <option selected disabled>...</option>
+                        <%vans.forEach(function(van) {%>
+                            <option><%=van.TipVozila%></option>
+                        <%});
+                        %>
+                      </select>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInput">Unesite dužinu:</label>
+                  <input type="textarea" class="form-control" id="duzina" placeholder="Dužina u km:" name="duzina">
+                </div>
+                <button type="submit" class="btn btn-default">Izračunaj</button>
+            </form>
+        </div>
+      </div>
+      <div class="col-lg-6 col-sm-12">
+        <h1 class="cover-heading" style="padding-top: 30px;">Informacije o porudžbini:</h1>
+        <div class="col-sm-6">
+            <table class="table table-bordered">
+              <tr>
+                <th>Cena porudžbine:</th>
+                <td>nikola</td>
+              </tr>
+              <tr>
+                <th>Vreme trajanja:</th>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+      </div>
+</div>
+<script>
+
+</script>

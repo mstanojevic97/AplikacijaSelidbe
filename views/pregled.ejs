@@ -10,41 +10,79 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/">POČETAK</a></li>
+          <li><a href="/porucivanje">PORUCIVANJE</a></li>
+          <li><a href="/logout">IZLOGUJ SE</a></li>
         </ul>
       </div>
     </div>
-  </nav>
-  <h1 class="cover-heading" style="padding-top: 30px;">Vaše narudžbine:</h1>  
+  </nav> 
   <div class="container bg-light text-dark">
-    <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Lokacija</th>
-        <th>Opis</th>
-        <th>Dužina</th>
-        <th>Vreme</th>
-        <th>Cena</th>
-        <th>Vozilo</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <% orders.forEach(function(order) { %>
-      <tr>
-        <th><%=order.ID%></th>
-        <th><%=order.Lokacija%></th>
-        <th><%=order.Opis%></th>
-        <th><%=order.Km%></th>
-        <th><%=order.Vreme%> Sata</th>
-        <th><%=order.Cena%> €</th>
-        <th>Vozilo</th>
-        <th>Status</th>
-      </tr>
-    <%});
-    %>
-    </table>
-</div>
+    <div>
+      <h1 class="cover-heading" style="padding-top: 30px;">Vaše narudžbine:</h1> 
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Lokacija</th>
+            <th>Opis</th>
+            <th>Dužina</th>
+            <th>Vreme</th>
+            <th>Cena</th>
+            <th>Vozilo</th>
+            <th>Status</th>
+            <th>Akcija</th>
+          </tr>
+        </thead>
+        <% viewModel.forEach(function(model) { %>
+          <tr>
+            <td><%=model.lokacija%></td>
+            <td><%=model.opis%></td>
+            <td><%=model.km%> Km</td>
+            <td><%=model.vreme%> h</td>
+            <td><%=model.cena%> €</td>
+            <td><%=model.tipVozila%></td>
+            <td><%=model.status%></td>
+            <td>
+              <a href="izmena_korisnik/<%= model.id %>" id="<%= model.id %>">IZMENA</a>
+            </td>
+          </tr>
+        <%});
+        %>
+        </table>
+    </div>
+    <div class="col-sm-12">
+      <h1 class="cover-heading" style="padding-top: 30px;">Izračunaj cenu i vreme nove narudžbine:</h1>
+      <div class="col-sm-4 col-xs-12">
+          <form action="/pregled" method="POST">
+            <div class="form-group">
+              <label for="exampleInput">Odaberite vozilo:</label>
+              <select class="form-control" name="vozilo" required>
+                  <%vans.forEach(function(van) {%>
+                      <option><%=van.TipVozila%></option>
+                  <%});
+                  %>
+              </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleInput">Unesite dužinu:</label>
+              <input type="textarea" class="form-control" id="duzina" placeholder="Dužina u km:" name="duzina">
+          </div>
+          <button id="racunanje" type="submit" class="btn btn-default">Izračunaj</button>
+          </form>
+      </div>
+    </div>
+    <div class="col-sm-4 col-xs-12" style="padding-top: 10px;">
+      <table class="table table-bordered">
+        <tr>
+          <th>Cena porudžbine:</th>
+          <td></td>
+        </tr>
+        <tr>
+          <th>Vreme trajanja:</th>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+  </div>
 <footer class="container-fluid text-center">
   <a href="#myPage" title="Nazad na vrh">
     <span class="glyphicon glyphicon-chevron-up"></span>

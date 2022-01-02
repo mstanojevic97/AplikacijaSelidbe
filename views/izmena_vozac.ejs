@@ -1,0 +1,46 @@
+<%- include('header'); -%>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/pregled">MOJE NARUDZBINE</a></li>
+        <li><a href="/logout">IZLOGUJ SE</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container bg-light text-dark">
+  <div class="col-lg-4 col-xs-12">
+      <h1 class="cover-heading" style="padding-top: 30px;">Izmena porudžbine:</h1>
+      <form action="<%=narudzbina.ID%>" method="POST">
+        <div class="form-group">
+          <label for="exampleInput">Vreme:</label>
+          <input type="textarea" class="form-control" required name="vreme" value="<%=narudzbina.vreme%>">
+        </div>
+        <div class="form-group">
+            <label for="exampleInput">Cena:</label>
+            <input type="textarea" class="form-control" required name="cena" value="<%=narudzbina.cena%>">
+        </div>
+        <div class="form-group">
+            <label for="exampleInput">Status:</label>
+            <select class="form-control" name="status" required>
+                <%statuses.forEach(function(status) {%>
+                    <option><%=status.NazivStatusa%></option>
+                <%});
+                %>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-default">Sačuvaj promene</button>
+      </form>
+  </div>
+</div>
+<script>
+
+</script>

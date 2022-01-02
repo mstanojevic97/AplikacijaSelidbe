@@ -10,61 +10,41 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/">POČETAK</a></li>
+        <li><a href="/pregled">MOJE NARUDZBINE</a></li>
+        <li><a href="/logout">IZLOGUJ SE</a></li>
       </ul>
     </div>
   </div>
 </nav>
-<div class="row"></div>
-    <div class="col-md-6">
-        <div class="col-sm-5 col-xs-12">
-            <h1 class="cover-heading" style="padding-top: 30px;">Izračunaj cenu i vreme:</h1>
-            <form>
-                <div class="form-group">
-                    <label for="exampleInput">Odaberite vozilo:</label>
-                    <select class="form-control">
-                        <option>...</option>
-                        <%vans.forEach(function(van) {%>
-                            <option><%=van.TipVozila%></option>
-                        <%});
-                        %>
-                      </select>
-                </div>
-                <div class="form-group">
-                  <label for="exampleInput">Unesite dužinu:</label>
-                  <input type="textarea" class="form-control" id="duzina" placeholder="Dužina u km:">
-                </div>
-                <button id="racunanje" type="submit" class="btn btn-default">Izračunaj</button>
-            </form>
-        </div> 
-    </div>
-    <div class="col-md-6">
-        <div class="col-sm-5 col-xs-12">
-            <h1 class="cover-heading" style="padding-top: 30px;">Rezerviši vozilo:</h1>
-            <form>
-                <div class="form-group">
-                    <label for="exampleInput">Odaberite vozilo:</label>
-                    <select class="form-control">
-                        <option>...</option>
-                        <%vans.forEach(function(van) {%>
-                            <option><%=van.TipVozila%></option>
-                        <%});
-                        %>
-                      </select>
-                </div>
-                <div class="form-group">
-                  <label for="exampleInput">Unesite dužinu:</label>
-                  <input type="textarea" class="form-control" id="duzina" placeholder="Dužina u km:">
-                </div>
-                <div class="checkbox">
-                    <label>
-                      <input type="checkbox"> Siguran sam!
-                    </label>
-                  </div>
-                <button id="porucivanje" type="submit" class="btn btn-default">Rezerviši</button>
-            </form>
+<div class="container bg-light text-dark">
+  <div class="col-lg-4 col-xs-12">
+      <h1 class="cover-heading" style="padding-top: 30px;">Rezerviši vozilo:</h1>
+      <form action="/porucivanje" method="POST">
+        <div class="form-group">
+          <label for="exampleInput">Unesite lokaciju:</label>
+          <input type="textarea" class="form-control" required name="lokacija">
         </div>
-    </div>
+        <div class="form-group">
+          <label for="exampleInput">Opis prevoza:</label>
+          <input type="textarea" class="form-control" required name="opis">
+        </div>
+        <div class="form-group">
+          <label for="exampleInput">Unesite dužinu:</label>
+          <input type="textarea" class="form-control" placeholder="Dužina u km:" required name="duzina">
+        </div>
+        <div class="form-group">
+            <label for="exampleInput">Odaberite vozilo:</label>
+            <select class="form-control" name="vozilo" required>
+                <%vans.forEach(function(van) {%>
+                    <option><%=van.TipVozila%></option>
+                <%});
+                %>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-default">Rezerviši</button>
+      </form>
+  </div>
+</div>
 <script>
 
 </script>

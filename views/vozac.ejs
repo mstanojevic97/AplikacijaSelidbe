@@ -10,12 +10,12 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/">POČETAK</a></li>
+          <li><a href="/logout">IZLOGUJ SE</a></li>
         </ul>
       </div>
-    </div>
+    </div> 
   </nav>
-  <h1 class="cover-heading" style="padding-top: 30px;">Narudžbine korisnika:</h1>  
+  <h1 class="cover-heading" style="padding-top: 30px;">Sve narudžbine:</h1>  
   <div class="container bg-light text-dark">
     <table class="table table-bordered">
     <thead>
@@ -31,20 +31,23 @@
         <th>Akcija</th>
       </tr>
     </thead>
-    <% orders.forEach(function(order) { %>
       <tr>
-        <th><%=order.ID%></th>
-        <th><%=order.Lokacija%></th>
-        <th><%=order.Opis%></th>
-        <th><%=order.Km%></th>
-        <th><%=order.Vreme%> Sata</th>
-        <th><%=order.Cena%> €</th>
-        <th>Vozilo</th>
-        <th>Status</th>
-        <th>Obriši/Gotovo</th>
-      </tr>
-    <%});
-    %>
+        <% viewModel.forEach(function(model) { %>
+          <tr>
+            <td><%=model.id%></td>
+            <td><%=model.lokacija%></td>
+            <td><%=model.opis%></td>
+            <td><%=model.km%> Km</td>
+            <td><%=model.vreme%></td>
+            <td><%=model.cena%> €</td>
+            <td><%=model.tipVozila%></td>
+            <td><%=model.status%></td>
+            <td>
+              <a href="izmena_vozac/<%= model.id %>" id="<%= model.id %>">IZMENA</a>
+            </td>
+          </tr>
+        <%});
+        %>
     </table>
 </div>
 <footer class="container-fluid text-center">

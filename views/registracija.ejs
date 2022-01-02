@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Prijava korisnika</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	</head>
+	<body>
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+			  <div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+			  </div>
+			  <div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav navbar-right">
+				  <li><a href="/">POČETAK</a></li>
+				</ul>
+			  </div>
+			</div>
+		  </nav>
+		<div class="container">
+			<div class="row" style="margin-top: 40px;">
+				<img class="logo" src="<%=logoSrc%>">
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-lg-4 col-xs-12">
+					<form action="/registracija" method="POST">
+						<div class="form-group">
+							<label>Ime:</label>
+							<input type="text" name="ime" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label>Prezime:</label>
+							<input type="text" name="prezime" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label>Email adresa:</label>
+							<input type="email" name="email" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label>Lozinka:</label>
+							<input type="password" name="password" class="form-control" required>
+						</div>
+						<input type="submit" class="btn btn-primary" role="button" value="Registruj se">
+						<a href="/login"><input type="button" value="Login"></a>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+
+</script>
