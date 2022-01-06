@@ -5,7 +5,6 @@ const config = require('config');
 const {getOrderStatuses, getVan, getRole, getOrder, getUsers, sendOrder, register, getVann, getOrder2, deleteU, updateOrderUser, updateOrderDriver,getOrderStatuses2, getOrder3}=require('./dbService');
 const { route } = require('express/lib/application');
 const { name } = require('ejs');
-/*055--057 kod taira za sesije */
 
 const UlogovaniKorisnik = (req,res,next)=>{
     const id = req.session.userName;
@@ -131,6 +130,22 @@ router.get('/pregled',UlogovaniKorisnik, async function(req,res){
         vans
     });
 });
+
+router.post('/pregled2',UlogovaniKorisnik, async function(req,res){
+    const vrednosti={
+        vozilo:req.body.vozilo,
+        duzina:req.body.duzina
+    }
+    const van=await getVann(vrednosti.vozilo);
+    const cena=van.Cena*vrednosti.duzina;
+    const vreme=vrednosti.duzina/van.Brzina;
+    const rezultat={
+        cenaPorudzbine:cena,
+        vremeTrajanja:vreme
+    }
+    res.json(rezultat);
+    res.end();
+})
 
 router.post('/pregled', UlogovaniKorisnik, async function(req, res){
     const racunanje={

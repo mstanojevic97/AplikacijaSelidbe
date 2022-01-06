@@ -52,10 +52,9 @@
     <div class="col-sm-12">
       <h1 class="cover-heading" style="padding-top: 30px;">Izračunaj cenu i vreme nove narudžbine:</h1>
       <div class="col-sm-4 col-xs-12">
-          <form action="/pregled" method="POST">
             <div class="form-group">
               <label for="exampleInput">Odaberite vozilo:</label>
-              <select class="form-control" name="vozilo" required>
+              <select class="form-control" name="vozilo" required id="vozilo">
                   <%vans.forEach(function(van) {%>
                       <option><%=van.TipVozila%></option>
                   <%});
@@ -66,19 +65,18 @@
             <label for="exampleInput">Unesite dužinu:</label>
               <input type="textarea" class="form-control" id="duzina" placeholder="Dužina u km:" name="duzina">
           </div>
-          <button id="racunanje" type="submit" class="btn btn-default">Izračunaj</button>
-          </form>
+          <button id="racunanje" class="btn btn-default" onclick="izracunaj()">Izračunaj</button>
       </div>
     </div>
     <div class="col-sm-4 col-xs-12" style="padding-top: 10px;">
       <table class="table table-bordered">
         <tr>
           <th>Cena porudžbine:</th>
-          <td></td>
+          <td id="cenaPorudzbine"></td>
         </tr>
         <tr>
           <th>Vreme trajanja:</th>
-          <td></td>
+          <td id="vremeTrajanja"></td>
         </tr>
       </table>
     </div>
@@ -91,3 +89,21 @@
 </footer>
 </body>
 </html>
+<script>
+  function izracunaj(){
+    const vozilo=$("#vozilo").val();
+    const duzina=parseFloat($("#duzina").val());
+    $.ajax({
+        type: 'post',
+        url: '/pregled2',
+        data: { vozilo:vozilo,duzina:duzina },
+        cache: false,
+        success: function (res) {
+          $("#cenaPorudzbine").html(res.cenaPorudzbine)
+          $("#vremeTrajanja").html(res.vremeTrajanja)
+        }, error: function (err) {
+            alert(err);
+        }
+    });
+  }
+</script>

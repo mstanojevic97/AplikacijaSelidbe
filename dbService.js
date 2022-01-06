@@ -109,7 +109,7 @@ exports.sendOrder=async (vrednosti)=>{
 
 exports.updateOrderUser=async(vrednosti)=>{
     return await new Promise(function(resolve, reject){
-        const values=[[
+        const values=[
             vrednosti.lokacija,
             vrednosti.opis,
             vrednosti.vreme,
@@ -117,7 +117,7 @@ exports.updateOrderUser=async(vrednosti)=>{
             vrednosti.idV,
             vrednosti.duzina,
             vrednosti.id
-        ]]
+        ]
         pool.query("UPDATE narudzbina SET Lokacija=?, Opis=?, Vreme=?, Cena=?, Id_Vozila=?, Km=?  WHERE ID=?",values,(err,data)=>{
             if(err){
                 reject(err);
@@ -128,12 +128,12 @@ exports.updateOrderUser=async(vrednosti)=>{
 }
 exports.updateOrderDriver=async(vrednosti)=>{
     return await new Promise (function(resolve, reject){
-        const values=[[
+        const values=[
             vrednosti.vreme,
             vrednosti.cena,
             vrednosti.idS,
             vrednosti.id
-        ]]
+        ]
         pool.query("UPDATE narudzbina SET Vreme=?, Cena=?, Id_Statusa=? WHERE ID=?",values,(err,data)=>{
             if(err){
                 reject(err+"Doslo je do greske!");
